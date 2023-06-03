@@ -1,0 +1,14 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+ }
+
+ .foo {
+  white-space: pre-wrap;
+  word-wrap: break-word; 
+  line-height: 0.75rem;
+ }
+
+ .nav-brand:hover {
+  cursor: pointer;
+  
+ }
