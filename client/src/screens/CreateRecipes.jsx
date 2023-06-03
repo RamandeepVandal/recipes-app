@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Toast from 'react-bootstrap/Toast';
 import Axios from "axios";
 
 // components
@@ -10,8 +11,12 @@ export const CreateRecipes = () => {
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   // showToast
-  const [toast, setToast] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
+  // get rid of toast or show the toast
+  const toggleShowToast = () => setShowToast(true);
+  const closeToast = () => setShowToast(false);
+  
   // onSubmit
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -43,6 +48,13 @@ export const CreateRecipes = () => {
       <Header />
 
       <section className="container d-flex justify-content-center align-items-center flex-column m-5">
+      <Toast className="mb-2" show={showToast} onClose={closeToast}>
+          <Toast.Header>
+            <strong className="me-auto">Success</strong>
+          </Toast.Header>
+          <Toast.Body>Recipe Created!</Toast.Body>
+        </Toast>
+
         <h1>Create Recipes</h1>
 
         <div className="d-flex flex-column card p-5">
@@ -89,30 +101,11 @@ export const CreateRecipes = () => {
             </div>
 
             <div className="d-flex justify-content-center align-items-center">
-              <button className="btn btn-dark btn-block btn-lg" type="submit">
+              <button className="btn btn-dark btn-block btn-lg" type="submit" onClick={toggleShowToast}>
                 Create
               </button>
             </div>
           </form>
-        </div>
-
-        <div
-          class="toast"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          auto-hide='false'
-        >
-          <div class="toast-header">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-              onClick={() => setToast(false)}
-            ></button>
-          </div>
-          <div class="toast-body">Hello, world! This is a toast message.</div>
         </div>
       </section>
     </div>
