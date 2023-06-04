@@ -32,7 +32,7 @@ export const CreateRecipes = () => {
         ingredients: modifiedIngredients,
         instructions: modifiedInstructions,
       });
-      setToast(true);
+     // setToast(true);
     } catch (error) {
       console.log(error);
     }
