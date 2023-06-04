@@ -1,5 +1,5 @@
 const express = require('express');
-const { getRecipes, setRecipes, deleteRecipes } = require('../controllers/recipeController');
+const { getRecipes, setRecipes, deleteRecipes, editRecipes } = require('../controllers/recipeController');
 
 // create a router
 const router = express.Router();
@@ -8,6 +8,6 @@ const router = express.Router();
 router.route('/').get(getRecipes).post(setRecipes);
 
 // route for deleting recipes
-router.route('/:id').delete(deleteRecipes);
+router.route('/:id').delete(deleteRecipes).put(editRecipes);
 
 module.exports = router;
